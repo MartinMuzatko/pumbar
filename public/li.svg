@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 130 110">
+    <g class="paw">
+        <path class="fil0" d="M49 61c-1,1 -31,29 -31,29 -29,17 -14,-24 -14,-28 0,-13 -13,-45 15,-30 9,4 33,19 30,29z"/>
+        <path class="fil0" d="M83 16c-12,18 -52,37 -53,5 0,-29 67,-25 53,-5z"/>
+        <path class="fil0" d="M86 103c-12,13 -70,13 -52,-18 15,-25 61,9 52,18z"/>
+        <path class="fil0" d="M104 16c-12,-1 -23,3 -22,16 4,47 81,-10 22,-16z"/>
+        <path class="fil0" d="M106 89c-12,2 -23,-1 -23,-14 1,-47 82,4 23,14z"/>
+    </g>
+</svg>

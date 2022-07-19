@@ -1,0 +1,561 @@
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+	box-sizing: border-box;
+	/* 1 */
+	border-width: 0;
+	/* 2 */
+	border-style: solid;
+	/* 2 */
+	border-color: currentColor;
+	/* 2 */
+}
+
+::before,
+::after {
+	--tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+*/
+
+html {
+	line-height: 1.5;
+	/* 1 */
+	-webkit-text-size-adjust: 100%;
+	/* 2 */
+	-moz-tab-size: 4;
+	/* 3 */
+	tab-size: 4;
+	/* 3 */
+	font-family: theme(
+		'fontFamily.sans',
+		ui-sans-serif,
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		'Helvetica Neue',
+		Arial,
+		'Noto Sans',
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji',
+		'Segoe UI Symbol',
+		'Noto Color Emoji'
+	);
+	/* 4 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+	margin: 0;
+	/* 1 */
+	line-height: inherit;
+	/* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+	height: 0;
+	/* 1 */
+	color: inherit;
+	/* 2 */
+	border-top-width: 1px;
+	/* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr[title] {
+	text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font family by default.
+2. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+	font-family: theme(
+		'fontFamily.mono',
+		ui-monospace,
+		SFMono-Regular,
+		Menlo,
+		Monaco,
+		Consolas,
+		'Liberation Mono',
+		'Courier New',
+		monospace
+	);
+	/* 1 */
+	font-size: 1em;
+	/* 2 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+	font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+	text-indent: 0;
+	/* 1 */
+	border-color: inherit;
+	/* 2 */
+	border-collapse: collapse;
+	/* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: inherit;
+	/* 1 */
+	font-size: 100%;
+	/* 1 */
+	line-height: inherit;
+	/* 1 */
+	color: inherit;
+	/* 1 */
+	margin: 0;
+	/* 2 */
+	padding: 0;
+	/* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+	text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	-webkit-appearance: button;
+	/* 1 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+	outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+	box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+	vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+	height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+	-webkit-appearance: textfield;
+	/* 1 */
+	outline-offset: -2px;
+	/* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	/* 1 */
+	font: inherit;
+	/* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+	display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+	margin: 0;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+}
+
+legend {
+	padding: 0;
+}
+
+ol,
+ul,
+li,
+menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+	resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::placeholder,
+textarea::placeholder {
+	opacity: 1;
+	/* 1 */
+	color: theme('colors.gray.400', #9ca3af);
+	/* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role='button'] {
+	cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+	cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+	display: block;
+	/* 1 */
+	vertical-align: middle;
+	/* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+	max-width: 100%;
+	height: auto;
+}
+
+/*
+Ensure the default browser behavior of the `hidden` attribute.
+*/
+
+[hidden] {
+	display: none;
+}
+
+@tailwind components;
+@tailwind utilities;
+.prose {
+	color: var(--tw-prose-body);
+}
+html,
+body {
+	height: 100%;
+	width: 100%;
+	background-color: black !important;
+}
+
+@font-face {
+	font-family: 'SuedFurs';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/SuedFurs.ttf') format('truetype');
+}
+
+.font-suedfurs {
+	font-family: 'SuedFurs';
+}
+
+.mantine-TextInput-icon {
+	@apply bg-gray-100 rounded-sm;
+	margin: 1px;
+}
+
+.mantine-TextInput-withIcon {
+	padding-left: 40px !important;
+}
+
+.mantine-TextInput-wrapper {
+	@apply overflow-hidden;
+}
+
+.grayscale {
+	filter: grayscale(1);
+}
+
+.grayscale-0:hover {
+	filter: grayscale(0);
+}
+
+.trans-abovecenter {
+	transform: translateX(-50%) translateY(50%);
+}
+
+.translate-l {
+	/* left: -100%; */
+	transform: translateX(-50%);
+}
+
+.stack > div {
+	font-weight: bold;
+	grid-row-start: 1;
+	grid-column-start: 1;
+	font-size: 4rem;
+	animation: stack 340ms cubic-bezier(0.46, 0.29, 0, 1.24) 1 backwards calc(var(--index) * 120ms),
+		glitch 2s ease infinite 2s alternate-reverse;
+}
+
+.stack > div:nth-child(odd) {
+	--glitch-translate: 8px;
+}
+.stack > div:nth-child(even) {
+	--glitch-translate: -8px;
+}
+
+@keyframes stack {
+	0% {
+		opacity: 0;
+		transform: translateX(-50%);
+		box-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+	}
+	60% {
+		opacity: 0.5;
+		transform: translateX(50%);
+	}
+	80% {
+		transform: none;
+		opacity: 1;
+		box-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+	}
+	100% {
+		box-shadow: none;
+	}
+}
+
+@keyframes glitch {
+	0% {
+		box-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+		transform: translate(var(--glitch-translate));
+	}
+	2% {
+		box-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+	}
+	4%,
+	100% {
+		box-shadow: none;
+		transform: none;
+	}
+}
+
+.prose li {
+	position: relative;
+}
+
+.prose {
+	max-width: 100%;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+	font-family: SuedFurs;
+}
+
+.prose li:before {
+	content: '';
+	position: absolute;
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2aWV3Qm94PSIwIDAgMTMwIDExMCI+CiAgICA8ZyBjbGFzcz0icGF3Ij4KICAgICAgICA8cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTQ5IDYxYy0xLDEgLTMxLDI5IC0zMSwyOSAtMjksMTcgLTE0LC0yNCAtMTQsLTI4IDAsLTEzIC0xMywtNDUgMTUsLTMwIDksNCAzMywxOSAzMCwyOXoiLz4KICAgICAgICA8cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTgzIDE2Yy0xMiwxOCAtNTIsMzcgLTUzLDUgMCwtMjkgNjcsLTI1IDUzLC01eiIvPgogICAgICAgIDxwYXRoIGNsYXNzPSJmaWwwIiBkPSJNODYgMTAzYy0xMiwxMyAtNzAsMTMgLTUyLC0xOCAxNSwtMjUgNjEsOSA1MiwxOHoiLz4KICAgICAgICA8cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTEwNCAxNmMtMTIsLTEgLTIzLDMgLTIyLDE2IDQsNDcgODEsLTEwIDIyLC0xNnoiLz4KICAgICAgICA8cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTEwNiA4OWMtMTIsMiAtMjMsLTEgLTIzLC0xNCAxLC00NyA4Miw0IDIzLDE0eiIvPgogICAgPC9nPgo8L3N2Zz4K);
+	width: 1em;
+	height: 1em;
+	margin: 0 0.25em;
+	display: inline-flex;
+	right: 100%;
+	transform: rotate(225deg) translateY(-5px);
+	background-repeat: no-repeat;
+}
+
+.prose p:first-child > img:first-child {
+	margin: 0;
+}

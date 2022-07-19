@@ -1,0 +1,72 @@
+version: '3'
+services:
+    reverse-proxy:
+        image: traefik:1.7 # The official Traefik docker image
+        container_name: ssf_reverse-proxy
+        command: --api --docker # Enables the web UI and tells Traefik to listen to docker
+        ports:
+            - '80:80' # The HTTP port
+            - '443:443' # The HTTPS port
+        networks:
+            - ssf
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
+            - /opt/ssf/web/reverse-proxy/traefik.toml:/etc/traefik/traefik.toml
+            - /opt/ssf/web/reverse-proxy/acme.json:/etc/traefik/acme.json
+
+    blitz:
+        image: registry.s-s-f.de/ssf/web2
+        networks:
+            - ssf
+        build: ./ssf-blitz
+        container_name: ssf_blitz
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.port=3000'
+            - 'traefik.frontend.rule=Host:beta.s-s-f.de'
+        restart: always
+
+    db:
+        container_name: ssf_db
+        image: bitnami/mariadb
+        networks:
+            - ssf
+        ports:
+            - 3306:3306
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: PMKoiahyqbI28OI89AJoinams1012831
+            MYSQL_DATABASE: ssf
+            MYSQL_USER: ssf
+            MYSQL_PASSWORD: OIMaomnsAIQY812KMPOoIjAZYQp1MOIMakmsd
+        volumes:
+            - ${PWD}/db/schema.sql:/docker-entrypoint-initdb.d/a-schema.sql
+            - ${PWD}/db/core-store.sql:/docker-entrypoint-initdb.d/b-core-store.sql
+
+    registry:
+        container_name: ssf_registry
+        image: registry:2
+        networks:
+            - ssf
+        volumes:
+            - /opt/ssf/registry/data:/var/lib/registry
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.port=5000'
+            - 'traefik.frontend.rule=Host:registry.s-s-f.de'
+
+    pwservice:
+        image: registry.s-s-f.de/ssf/pwservice
+        networks:
+            - ssf
+        build: ./pwservice
+        container_name: ssf_pwservice
+        restart: always
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.port=80'
+            - 'traefik.frontend.rule=Host:pwservice.s-s-f.de'
+volumes:
+    server-public:
+networks:
+    ssf:
