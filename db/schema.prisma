@@ -13,14 +13,14 @@ generator client {
 // --------------------------------------
 
 model User {
-  id                   Int            @id @default(autoincrement())
-  createdAt            DateTime       @default(now())
-  updatedAt            DateTime       @updatedAt
-  name                 String
-  email                String         @unique
-  hashedPassword       String?
-  tokens               Token[]
-  sessions             Session[]
+  id             Int       @id @default(autoincrement())
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  name           String
+  email          String    @unique
+  hashedPassword String?
+  tokens         Token[]
+  sessions       Session[]
 }
 
 model Session {
@@ -55,4 +55,32 @@ model Token {
   @@unique([hashedToken, type])
 }
 
+model Recipe {
+  id        Int          @id @default(autoincrement())
+  name      String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  steps     RecipeStep[]
+}
 
+model Ingredient {
+  id                Int          @id @default(autoincrement())
+  name              String
+  relais            Int
+  timePerCentiliter Int
+  alcohol           Int
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  recipeSteps       RecipeStep[]
+}
+
+model RecipeStep {
+  id           Int        @id @default(autoincrement())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  centiliter   Int
+  recipeId     Int
+  ingredientId Int
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+  recipe       Recipe     @relation(fields: [recipeId], references: [id])
+}
