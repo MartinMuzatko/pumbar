@@ -1,7 +1,6 @@
 import { Group, Button, ButtonProps } from '@mantine/core'
 import { showNotification, updateNotification } from '@mantine/notifications'
 import { MdCheckCircleOutline, MdError } from 'react-icons/md'
-import Trans from './Trans'
 
 interface SaveButtonProps {
 	onClick: () => Promise<void> | void | any
@@ -19,7 +18,7 @@ const SaveButton = ({ onClick, hideNotification, ...props }: React.PropsWithChil
 					!hideNotification && showNotification({
 						id: 'load-data',
 						loading: true,
-						title: <Trans>Daten werden gespeichert</Trans>,
+						title: 'Daten werden gespeichert',
 						message: '',
 						autoClose: false,
 						disallowClose: true,
@@ -30,7 +29,7 @@ const SaveButton = ({ onClick, hideNotification, ...props }: React.PropsWithChil
 							!hideNotification && updateNotification({
 								id: 'load-data',
 								color: 'teal',
-								title: <Trans>Daten wurden erfolgreich gespeichert!</Trans>,
+								title: 'Daten wurden erfolgreich gespeichert!',
 								message: '',
 								icon: <MdCheckCircleOutline />,
 								autoClose: 5000,
@@ -42,7 +41,7 @@ const SaveButton = ({ onClick, hideNotification, ...props }: React.PropsWithChil
 							loading: true,
 							icon: <MdError />,
 							color: 'red',
-							title: <Trans>Fehler</Trans>,
+							title: 'Fehler',
 							message: error.message,
 							autoClose: false,
 							disallowClose: true,

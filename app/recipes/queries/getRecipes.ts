@@ -5,7 +5,6 @@ interface GetRecipesInput
 	extends Pick<Prisma.RecipeFindManyArgs, 'where' | 'orderBy' | 'skip' | 'take'> { }
 
 export default resolver.pipe(
-	resolver.authorize(),
 	async ({ where, orderBy, skip = 0, take = 100 }: GetRecipesInput) => {
 		// TODO: in multi-tenant app, you must add validation to ensure correct tenant
 		const {
@@ -16,9 +15,9 @@ export default resolver.pipe(
 		} = await paginate({
 			skip,
 			take,
-			count: () => db.recipe.count({ where }),
+			count: () => db.recipe.count({ where: where || {} }),
 			query: (paginateArgs) => db.recipe.findMany({
-				...paginateArgs, where, orderBy, include: {
+				...paginateArgs, where: where || {}, orderBy, include: {
 					steps: {
 						include: {
 							ingredient: true,

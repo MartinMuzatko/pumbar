@@ -1,14 +1,19 @@
-import { BlitzPage } from 'blitz'
+import { BlitzPage, useMutation, useQuery } from 'blitz'
 import Layout from 'app/core/layouts/Layout'
-import { Switch, Tabs } from '@mantine/core'
-import { useState } from 'react'
+import { Button, Switch, Tabs } from '@mantine/core'
+import { Suspense, useState } from 'react'
 import { useListState } from '@mantine/hooks'
 import RecipeCard from 'app/recipes/components/RecipeCard'
 import { CompleteRecipe } from 'app/recipes/types'
 import RecipeEditor from 'app/recipes/components/RecipeEditor'
 import IngredientsEditor from 'app/ingredients/components/IngredientEditor'
+import SaveButton from 'app/core/components/SaveButton'
+import updateRecipes from 'app/recipes/mutations/updateRecipes'
+import getRecipes from 'app/recipes/queries/getRecipes'
 
-const IndexPage: BlitzPage = () => {
+const RecipeIngredientTabs = () => {
+	const [{ recipes: originalRecipes }] = useQuery(getRecipes, {})
+	const [updateRecipesMutation, updateRecipesSubmission] = useMutation(updateRecipes)
 	const originalIngredients = [
 		{
 			id: 1,
@@ -48,52 +53,36 @@ const IndexPage: BlitzPage = () => {
 		},
 	]
 	const [ingredients, ingredientsHandler] = useListState(originalIngredients)
-	const originalRecipes: CompleteRecipe[] = [
-		{
-			id: 1,
-			name: 'Coconut Kiss',
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			steps: [
-				{
-					ingredient: ingredients[0],
-					centiliter: 4,
-				},
-				{
-					ingredient: ingredients[1],
-					centiliter: 6,
-				}
-			]
-		},
-		{
-			id: 2,
-			name: 'Cuba Libre',
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			steps: [
-				{
-					ingredient: ingredients[2],
-					centiliter: 3,
-				},
-				{
-					ingredient: ingredients[3],
-					centiliter: 4,
-				}
-			]
-		}
-	]
 	const [recipes, recipesHandler] = useListState(originalRecipes)
 	const [editMode, setEditMode] = useState(false)
 	return <div className="">
 		<Tabs classNames={{ tabsList: 'bg-green-1o00' }}>
 			<Tabs.Tab label="Rezepte">
 				<div className="p-4 bg-gray-800">
-					{recipes.map(recipe => <div className="my-4" key={recipe.id}>
+					{editMode && <>
+						<Button onClick={() => {
+							recipesHandler.append({
+								id: -1,
+								createdAt: new Date(),
+								updatedAt: new Date(),
+								name: 'Neues Rezept',
+								steps: [],
+							})
+						}}>
+							Rezept hinzufügen
+						</Button>
+					</>}
+					{recipes.map((recipe, index) => <div className="my-4" key={recipe.id}>
 						{editMode
-							? <RecipeEditor {...{ ingredients, recipe, recipeHandler: recipesHandler }} />
+							? <RecipeEditor {...{ ingredients, recipe, recipeHandler: recipesHandler, index }} />
 							: <RecipeCard {...{ recipe }} />
 						}
 					</div>)}
+					{editMode && <>
+						<SaveButton onClick={() => { updateRecipesMutation() }} loading={updateRecipesSubmission.isLoading}>
+							Speichern
+						</SaveButton>
+					</>}
 				</div>
 			</Tabs.Tab>
 			<Tabs.Tab label="Zutaten">
@@ -107,6 +96,12 @@ const IndexPage: BlitzPage = () => {
 			<Switch label="Edit Modus" checked={editMode} onChange={e => setEditMode(e.currentTarget.checked)} />
 		</div>
 	</div>
+}
+
+const IndexPage: BlitzPage = () => {
+	return <Suspense fallback="loading...">
+		<RecipeIngredientTabs />
+	</Suspense>
 }
 
 IndexPage.suppressFirstRenderFlicker = true

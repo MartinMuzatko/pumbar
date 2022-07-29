@@ -9,9 +9,10 @@ interface RecipeEditorProps {
 	recipe: CompleteRecipe
 	recipeHandler: UseListStateHandler<CompleteRecipe>
 	ingredients: Ingredient[]
+	index: number
 }
 
-const RecipeEditor = ({ recipe, ingredients, recipeHandler }: RecipeEditorProps) => {
+const RecipeEditor = ({ recipe, ingredients, recipeHandler, index }: RecipeEditorProps) => {
 	const [ingredientDialogOpened, setIngredientDialogOpened] = useState(false)
 	const [recipeSteps, recipeStepsHandler] = useListState(recipe.steps)
 	const hasAlcohol = recipeSteps.filter((s) => s.ingredient.alcohol).length
@@ -19,7 +20,9 @@ const RecipeEditor = ({ recipe, ingredients, recipeHandler }: RecipeEditorProps)
 	return (
 		<article className="shadow rounded p-4">
 			<h3 className="flex justify-between">
-				<TextInput label="Name" value={recipe.name} />
+				<TextInput label="Name" value={recipe.name} onChange={e => {
+					recipeHandler.setItemProp(index, 'name', e.currentTarget.value)
+				}} />
 				<div>
 					{/* ★☆ */}
 					{hasAlcohol ? (
