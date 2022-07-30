@@ -31,17 +31,9 @@ module.exports = {
 				'yellow-bg-dark/100': 'hsla(44,3%,17%,1)',
 				'yellow-bg-light': 'hsla(46,96%,91%,.6)',
 			},
-			typography: {
-				DEFAULT: {
-					css: {
-						color: '#000',
-					},
-				},
-			},
 			boxShadow: {
 				'top': '0.2em -0.1em 0.2em #00000024'
 			}
 		},
 	},
-	plugins: [require('@tailwindcss/typography')],
 }
