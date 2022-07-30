@@ -1,6 +1,9 @@
 import { Button, NumberInput, Select, TextInput } from '@mantine/core'
 import { UseListStateHandler } from '@mantine/hooks/lib/use-list-state/use-list-state'
+import SaveButton from 'app/core/components/SaveButton'
 import { Ingredient } from 'app/types'
+import { useMutation } from 'blitz'
+import updateIngredients from '../mutations/updateIngredients'
 import TeachIngredient from './TeachIngredient'
 
 interface IngredientsEditorProps {
@@ -9,13 +12,32 @@ interface IngredientsEditorProps {
 }
 
 const IngredientsEditor = ({ ingredients, ingredientsHandler }: IngredientsEditorProps) => {
+	const [updateIngredientsMutation, updateIngredientsSubmission] = useMutation(updateIngredients)
+	const relais = [
+		'2',
+		'3',
+		'4',
+		'7',
+		'8',
+		'9',
+		'10',
+		'14',
+		'15',
+		'17',
+		'18',
+		'22',
+		'23',
+		'24',
+		'25',
+		'27',
+	]
 	return <>
 		<Button onClick={() => {
 			ingredientsHandler.append({
 				alcohol: 0,
 				id: -1,
 				name: 'Zutatensaft',
-				relais: 1,
+				relais: 2,
 				timePerCentiliter: 1000,
 			})
 		}}>
@@ -43,7 +65,7 @@ const IngredientsEditor = ({ ingredients, ingredientsHandler }: IngredientsEdito
 						<TextInput value={ingredient.name} onChange={e => { ingredientsHandler.setItemProp(index, 'name', e.target.value) }} />
 					</td>
 					<td>
-						<Select value={ingredient.relais + ''} data={['1', '2', '3', '4', '5', '6', '7', '8']} onChange={v => ingredientsHandler.setItemProp(index, 'relais', parseInt(v || '0'))} />
+						<Select value={ingredient.relais + ''} data={relais} onChange={v => ingredientsHandler.setItemProp(index, 'relais', parseInt(v || '0'))} />
 					</td>
 					<td>
 						<NumberInput value={ingredient.alcohol} onChange={v => { ingredientsHandler.setItemProp(index, 'alcohol', v || 0) }} />
@@ -53,6 +75,9 @@ const IngredientsEditor = ({ ingredients, ingredientsHandler }: IngredientsEdito
 				</tr>)}
 			</tbody>
 		</table>
+		<SaveButton onClick={() => updateIngredientsMutation(ingredients)} loading={updateIngredientsSubmission.isLoading}>
+			Speichern
+		</SaveButton>
 	</>
 }
 export default IngredientsEditor

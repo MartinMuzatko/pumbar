@@ -1,1 +1,30 @@
-[]
+[
+    {
+        "alcohol": 0,
+        "id": -1,
+        "name": "Testsaft",
+        "relais": 24,
+        "timePerCentiliter": 1800
+    },
+    {
+        "alcohol": 0,
+        "id": -1,
+        "name": "O-Saft",
+        "relais": 8,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": -1,
+        "name": "A-Saft",
+        "relais": 2,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": -1,
+        "name": "Triple Sec",
+        "relais": 25,
+        "timePerCentiliter": 1000
+    }
+]

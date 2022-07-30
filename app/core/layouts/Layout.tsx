@@ -14,9 +14,6 @@ const Layout = ({ children, title, contain, className }: LayoutProps) => {
 	const router = useRouter()
 	return (
 		<div>
-			<Head>
-				<title>{title || 'Südstaaten Furs e.V.'}</title>
-			</Head>
 			{contain ? (
 				<div className="lg:container py-4">
 					<div className="rounded shadow relative">

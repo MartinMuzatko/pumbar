@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head>
-				<title>Südstaatenfurs</title>
+				<title>Pumbar</title>
 				<link rel="icon" href={favicon.src} />
 				<meta
 					name="viewport"

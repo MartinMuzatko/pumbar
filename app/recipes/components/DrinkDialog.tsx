@@ -1,6 +1,8 @@
 import { Button, Modal } from '@mantine/core'
 import FillProgress from 'app/core/components/FillProgress'
+import { useMutation } from 'blitz'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import assembleCocktail from '../mutations/assembleCocktail'
 import { CompleteRecipe } from '../types'
 
 interface DrinkDialogProps {
@@ -16,6 +18,7 @@ enum MixingState {
 }
 
 const DrinkDialog = ({ recipe, inProgress, setInProgress }: DrinkDialogProps) => {
+	const [assembleCocktailMutation] = useMutation(assembleCocktail)
 	const [mixing, setMixing] = useState(MixingState.idle)
 	useEffect(() => {
 		mixing == MixingState.done && setTimeout(() => setInProgress(false), 5000)
@@ -41,6 +44,7 @@ const DrinkDialog = ({ recipe, inProgress, setInProgress }: DrinkDialogProps) =>
 					<Button
 						onClick={() => {
 							setMixing(MixingState.mixing)
+							assembleCocktailMutation(recipe)
 						}}
 					>
 						Zubereitung beginnen

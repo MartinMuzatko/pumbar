@@ -563,3 +563,7 @@ body {
 ::-webkit-scrollbar {
 	display: none;
 }
+
+html {
+	font-size: 20px;
+}
