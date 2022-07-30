@@ -22,7 +22,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
 				}}
 				className="shadow rounded p-4 py-8 cursor-pointer bg-green-600/50"
 			>
-				<h3 className="flex justify-between">
+				<h3>
 					<div className="font-bold text-4xl">{recipe.name}</div>
 					<div>
 						{/* ★☆ */}
@@ -34,7 +34,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
 								))}
 							</>
 						) : (
-							'Alkoholfrei'
+							<small>☆ Alkoholfrei</small>
 						)}
 					</div>
 				</h3>

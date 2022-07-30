@@ -46,13 +46,12 @@ const RecipeIngredientTabs = () => {
 					</div>
 				</Tabs.Tab>
 			</Tabs>
-		</> : <>
-			{recipes.map((recipe, index) => <div className="my-4" key={index}>
-				<RecipeCard {...{ recipe }} />
-			</div>)}
-		</>}
+		</> : <div className="px-4 grid gap-4 grid-cols-2">
+			{recipes.map((recipe, index) => <RecipeCard key={index} {...{ recipe }} />)}
+		</div>}
 		<div className="p-4">
 			<Switch label="Edit Modus" checked={editMode} onChange={e => setEditMode(e.currentTarget.checked)} />
+			<Button size="sm" className="mt-4" onClick={() => location.reload()}>Reload</Button>
 		</div>
 	</div>
 }

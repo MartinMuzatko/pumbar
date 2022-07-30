@@ -18,7 +18,7 @@ const Layout = ({ children, title, contain, className }: LayoutProps) => {
 				<title>{title || 'Südstaaten Furs e.V.'}</title>
 			</Head>
 			{contain ? (
-				<div className="container pt-8">
+				<div className="lg:container py-4">
 					<div className="rounded shadow relative">
 						{children}
 					</div>
@@ -27,7 +27,7 @@ const Layout = ({ children, title, contain, className }: LayoutProps) => {
 				children
 			)}
 			<footer>
-				<div className="container">
+				<div className="lg:container p-4">
 					<h1 className="font-bold text-xl">
 						PuMbar! - Mixen bis zum Morgengrauen
 					</h1>
