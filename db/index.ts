@@ -16,7 +16,7 @@ const readRecipes = async (): Promise<CompleteRecipe[]> => {
 		...recipe,
 		steps: recipe.steps.map(step => ({
 			...step,
-			ingredient: ingredients.find(ingredient => ingredient.id === step.ingredientId) || { alcohol: 0, id: 1, name: '', relais: 1, timePerCentiliter: 0 }
+			ingredient: ingredients.find(ingredient => ingredient.id === step.ingredientId) || { alcohol: 0, id: 'test', name: '', relais: 1, timePerCentiliter: 0 }
 		}))
 	}))
 }
