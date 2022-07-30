@@ -1,5 +1,5 @@
 export type Ingredient = {
-	id: number
+	id: string
 	name: string
 	relais: number
 	timePerCentiliter: number
@@ -8,7 +8,7 @@ export type Ingredient = {
 
 export type RecipeStep = {
 	centiliter: number
-	ingredientId: number
+	ingredientId: string
 }
 
 export type Recipe = {

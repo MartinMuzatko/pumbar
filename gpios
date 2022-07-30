@@ -19,12 +19,37 @@ R 7 Blau    PI rechts 12    GPIO - 8
 R 8 Grün    PI rechts 13    GPIO - 7
 
 
+2
+3
+4
+7
+8
+9
+10
+14
+15
+17
+18
+22
+23
+24
+25
+27
 
 
 
 
 
+raspi-gpio set 22 op dh;
+raspi-gpio set 27 op dh;
+raspi-gpio set 10 op dh;
+raspi-gpio set 9 op dh;
 
+
+raspi-gpio set 2 op dh;
+raspi-gpio set 3 op dh;
+raspi-gpio set 4 op dh;
+raspi-gpio set 17 op dh;
 raspi-gpio set 22 op dh;
 raspi-gpio set 27 op dh;
 raspi-gpio set 10 op dh;
@@ -60,11 +85,4 @@ raspi-gpio set 27 op dl;
 raspi-gpio set 10 op dl;
 raspi-gpio set 9 op dl;
 
-raspi-gpio set 2 op dh;
-raspi-gpio set 3 op dh;
-raspi-gpio set 4 op dh;
-raspi-gpio set 17 op dh;
-raspi-gpio set 22 op dh;
-raspi-gpio set 27 op dh;
-raspi-gpio set 10 op dh;
-raspi-gpio set 9 op dh;
+

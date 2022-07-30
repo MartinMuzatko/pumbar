@@ -1,8 +1,8 @@
-import { Button, Modal, Slider, TextInput } from '@mantine/core'
+import { Button, Divider, Modal, Slider, TextInput } from '@mantine/core'
 import { useListState } from '@mantine/hooks'
 import { UseListStateHandler } from '@mantine/hooks/lib/use-list-state/use-list-state'
 import { Ingredient } from 'app/types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CompleteRecipe } from '../types'
 
 interface RecipeEditorProps {
@@ -17,6 +17,9 @@ const RecipeEditor = ({ recipe, ingredients, recipeHandler, index }: RecipeEdito
 	const [recipeSteps, recipeStepsHandler] = useListState(recipe.steps)
 	const hasAlcohol = recipeSteps.filter((s) => s.ingredient.alcohol).length
 	const totalTime = recipeSteps.reduce((prev, cur) => prev + cur.centiliter, 0)
+	useEffect(() => {
+		recipeHandler.setItemProp(index, 'steps', recipeSteps)
+	}, [index, recipeSteps, recipeHandler])
 	return (
 		<article className="shadow rounded p-4">
 			<h3 className="flex justify-between">
@@ -35,6 +38,7 @@ const RecipeEditor = ({ recipe, ingredients, recipeHandler, index }: RecipeEdito
 					) : (
 						'Alkoholfrei'
 					)}
+					<Button onClick={() => { recipeHandler.remove(index) }} className="ml-4" size="xs" color="red">Löschen</Button>
 				</div>
 			</h3>
 			<div className="my-4">
@@ -49,7 +53,20 @@ const RecipeEditor = ({ recipe, ingredients, recipeHandler, index }: RecipeEdito
 				{recipeSteps.map((step, stepIndex) => (
 					<>
 						<div key={stepIndex}>
-							{step.centiliter}cl {step.ingredient.name}
+							<div className="flex items-center justify-between">
+								<span>
+									{step.centiliter}cl {step.ingredient.name}
+								</span>
+								<Button
+									onClick={() => {
+										recipeStepsHandler.remove(stepIndex)
+										recipeHandler.setItemProp(index, 'steps', recipeSteps)
+									}}
+									className="ml-4" size="xs" color="red"
+								>
+									Löschen
+								</Button>
+							</div>
 							<small>({((step.centiliter / totalTime) * 100).toFixed(0)}%)</small>
 							<Slider
 								value={step.centiliter}
@@ -58,12 +75,12 @@ const RecipeEditor = ({ recipe, ingredients, recipeHandler, index }: RecipeEdito
 										...step,
 										centiliter: v,
 									})
-									recipeHandler.setItemProp(index, 'steps', recipeSteps)
 								}}
 								max={50}
 								step={0.5}
 								label={`${step.centiliter} cl`}
 							/>
+							<Divider className="my-2" />
 						</div>
 					</>
 				))}
@@ -79,11 +96,11 @@ const RecipeEditor = ({ recipe, ingredients, recipeHandler, index }: RecipeEdito
 					<div
 						onClick={() => {
 							setIngredientDialogOpened(false)
-							const newStep = { id: 0, createdAt: new Date(), updatedAt: new Date(), ingredientId: ingredient.id, ingredient, centiliter: 4 }
+							const newStep = { ingredientId: ingredient.id, ingredient, centiliter: 4 }
 							recipeStepsHandler.append(newStep)
 							recipeHandler.setItemProp(index, 'steps', [...recipeSteps, newStep])
 						}}
-						className="flex rounded cursor-pointer hover:bg-green-200 p-4"
+						className="flex rounded cursor-pointer hover:bg-green-800 p-4"
 						key={ingredient.id}
 					>
 						<span className="pr-2">{ingredient.name}</span>

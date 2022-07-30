@@ -1,30 +1,37 @@
 [
     {
         "alcohol": 0,
-        "id": -1,
-        "name": "Testsaft",
-        "relais": 24,
-        "timePerCentiliter": 1800
-    },
-    {
-        "alcohol": 0,
-        "id": -1,
-        "name": "O-Saft",
-        "relais": 8,
-        "timePerCentiliter": 1000
-    },
-    {
-        "alcohol": 0,
-        "id": -1,
-        "name": "A-Saft",
+        "id": "BAGIS-IUzLzulJ_Ipy6Jg",
+        "name": "A-Saftlee",
         "relais": 2,
         "timePerCentiliter": 1000
     },
     {
         "alcohol": 0,
-        "id": -1,
-        "name": "Triple Sec",
-        "relais": 25,
+        "id": "YYKpHRZg1Su3ZyQb-Sr59",
+        "name": "O-Saft",
+        "relais": 4,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "uErxHahJF9_JMnPXcSUh8",
+        "name": "Miausaft",
+        "relais": 7,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 5,
+        "id": "szg089FavNlUScj1apf7w",
+        "name": "Triplesec",
+        "relais": 14,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "JNndHjy-NgVOh3g2Dbrra",
+        "name": "Zutatensaft",
+        "relais": 23,
         "timePerCentiliter": 1000
     }
 ]

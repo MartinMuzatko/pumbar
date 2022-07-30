@@ -1,1 +1,67 @@
-[]
+[
+    {
+        "name": "Coconut Kiss",
+        "steps": [
+            {
+                "ingredientId": "BAGIS-IUzLzulJ_Ipy6Jg",
+                "ingredient": {
+                    "alcohol": 0,
+                    "id": "BAGIS-IUzLzulJ_Ipy6Jg",
+                    "name": "A-Saftlee",
+                    "relais": 2,
+                    "timePerCentiliter": 1000
+                },
+                "centiliter": 17
+            },
+            {
+                "ingredientId": "uErxHahJF9_JMnPXcSUh8",
+                "ingredient": {
+                    "alcohol": 0,
+                    "id": "uErxHahJF9_JMnPXcSUh8",
+                    "name": "Miausaft",
+                    "relais": 7,
+                    "timePerCentiliter": 1000
+                },
+                "centiliter": 7
+            }
+        ]
+    },
+    {
+        "name": "Swimming Pool",
+        "steps": [
+            {
+                "ingredientId": "JNndHjy-NgVOh3g2Dbrra",
+                "ingredient": {
+                    "alcohol": 0,
+                    "id": "JNndHjy-NgVOh3g2Dbrra",
+                    "name": "Zutatensaft",
+                    "relais": 23,
+                    "timePerCentiliter": 1000
+                },
+                "centiliter": 10
+            },
+            {
+                "ingredientId": "szg089FavNlUScj1apf7w",
+                "ingredient": {
+                    "alcohol": 5,
+                    "id": "szg089FavNlUScj1apf7w",
+                    "name": "Triplesec",
+                    "relais": 14,
+                    "timePerCentiliter": 1000
+                },
+                "centiliter": 4
+            },
+            {
+                "ingredientId": "uErxHahJF9_JMnPXcSUh8",
+                "ingredient": {
+                    "alcohol": 0,
+                    "id": "uErxHahJF9_JMnPXcSUh8",
+                    "name": "Miausaft",
+                    "relais": 7,
+                    "timePerCentiliter": 1000
+                },
+                "centiliter": 8
+            }
+        ]
+    }
+]

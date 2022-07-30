@@ -5,6 +5,7 @@ import { Ingredient } from 'app/types'
 import { useMutation } from 'blitz'
 import updateIngredients from '../mutations/updateIngredients'
 import TeachIngredient from './TeachIngredient'
+import { nanoid } from 'nanoid'
 
 interface IngredientsEditorProps {
 	ingredients: Ingredient[]
@@ -35,7 +36,7 @@ const IngredientsEditor = ({ ingredients, ingredientsHandler }: IngredientsEdito
 		<Button onClick={() => {
 			ingredientsHandler.append({
 				alcohol: 0,
-				id: -1,
+				id: nanoid(),
 				name: 'Zutatensaft',
 				relais: 2,
 				timePerCentiliter: 1000,
@@ -71,7 +72,18 @@ const IngredientsEditor = ({ ingredients, ingredientsHandler }: IngredientsEdito
 						<NumberInput value={ingredient.alcohol} onChange={v => { ingredientsHandler.setItemProp(index, 'alcohol', v || 0) }} />
 					</td>
 					<td>
-						<NumberInput value={ingredient.timePerCentiliter} onChange={v => { ingredientsHandler.setItemProp(index, 'timePerCentiliter', v || 10000) }} rightSection="ms/cl" />					</td>
+						<div className="flex">
+							<NumberInput value={ingredient.timePerCentiliter} onChange={v => { ingredientsHandler.setItemProp(index, 'timePerCentiliter', v || 10000) }} rightSection="ms/cl" />
+							<Button
+								onClick={() => {
+									ingredientsHandler.remove(index)
+								}}
+								className="ml-4" size="xs" color="red"
+							>
+								&times;
+							</Button>
+						</div>
+					</td>
 				</tr>)}
 			</tbody>
 		</table>
