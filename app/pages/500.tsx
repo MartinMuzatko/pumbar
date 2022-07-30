@@ -3,12 +3,11 @@ import Layout from 'app/core/layouts/Layout'
 import Error404Image1 from 'public/404-cat.gif'
 import Error404Image2 from 'public/404-falk.gif'
 import { Button, Divider } from '@mantine/core'
-import Trans from 'app/core/components/Trans'
 
 export default function Page500() {
 	const randomError = Math.random() > 0.5
-		? { image: Error404Image1, text: <Trans>Ich kanns nicht glauben! Die Website ist weg :</Trans> }
-		: { image: Error404Image2, text: <Trans>Die Website wurde gerade weg geschnappt :</Trans> }
+		? { image: Error404Image1, text: 'Ich kanns nicht glauben! Die Website ist weg' }
+		: { image: Error404Image2, text: 'Die Website wurde gerade weg geschnappt' }
 	const statusCode = 404
 	return (
 		<>

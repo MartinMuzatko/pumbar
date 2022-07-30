@@ -18,9 +18,11 @@ const Layout = ({ children, title, contain, className }: LayoutProps) => {
 				<title>{title || 'Südstaaten Furs e.V.'}</title>
 			</Head>
 			<header>
-				<div className="bg-gray-50 dark:bg-gray-800 z-10 relative">
+				<div className="bg-gray-600 dark:bg-gray-800 z-10 relative">
 					<div className="container">
-						Header
+						<h1 className="font-bold text-xl">
+							PuMbar! - Mixen bis zum Morgengrauen
+						</h1>
 					</div>
 				</div>
 			</header>

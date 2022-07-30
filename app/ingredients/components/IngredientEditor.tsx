@@ -10,6 +10,19 @@ interface IngredientsEditorProps {
 
 const IngredientsEditor = ({ ingredients, ingredientsHandler }: IngredientsEditorProps) => {
 	return <>
+		<Button onClick={() => {
+			ingredientsHandler.append({
+				alcohol: 0,
+				createdAt: new Date(),
+				updatedAt: new Date(),
+				id: -1,
+				name: 'Zutatensaft',
+				relais: 1,
+				timePerCentiliter: 1000,
+			})
+		}}>
+			Zutat hinzufügen
+		</Button>
 		<table className="w-full bg-gray-800">
 			<thead className="bg-green-800 text-left shadow">
 				<tr>
@@ -25,7 +38,7 @@ const IngredientsEditor = ({ ingredients, ingredientsHandler }: IngredientsEdito
 					<td className="py-1">
 						<div className="flex">
 							<Button className="mr-2">Vorlauf</Button>
-							<TeachIngredient {...{ ingredient, ingredientsHandler }} />
+							<TeachIngredient {...{ ingredient, ingredientsHandler, index }} />
 						</div>
 					</td>
 					<td>

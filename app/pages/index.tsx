@@ -10,48 +10,12 @@ import IngredientsEditor from 'app/ingredients/components/IngredientEditor'
 import SaveButton from 'app/core/components/SaveButton'
 import updateRecipes from 'app/recipes/mutations/updateRecipes'
 import getRecipes from 'app/recipes/queries/getRecipes'
+import getIngredients from 'app/ingredients/queries/getIngredients'
 
 const RecipeIngredientTabs = () => {
 	const [{ recipes: originalRecipes }] = useQuery(getRecipes, {})
+	const [{ ingredients: originalIngredients }] = useQuery(getIngredients, {})
 	const [updateRecipesMutation, updateRecipesSubmission] = useMutation(updateRecipes)
-	const originalIngredients = [
-		{
-			id: 1,
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			alcohol: 0,
-			name: 'Ananassaft',
-			timePerCentiliter: 1000,
-			relais: 1,
-		},
-		{
-			id: 2,
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			alcohol: 0,
-			name: 'Orangensaft',
-			timePerCentiliter: 1000,
-			relais: 2,
-		},
-		{
-			id: 3,
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			alcohol: 30,
-			name: 'Triple Sec',
-			timePerCentiliter: 1000,
-			relais: 3,
-		},
-		{
-			id: 4,
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			alcohol: 0,
-			name: 'Coca Cola',
-			timePerCentiliter: 1000,
-			relais: 4,
-		},
-	]
 	const [ingredients, ingredientsHandler] = useListState(originalIngredients)
 	const [recipes, recipesHandler] = useListState(originalRecipes)
 	const [editMode, setEditMode] = useState(false)
@@ -79,7 +43,7 @@ const RecipeIngredientTabs = () => {
 						}
 					</div>)}
 					{editMode && <>
-						<SaveButton onClick={() => { updateRecipesMutation() }} loading={updateRecipesSubmission.isLoading}>
+						<SaveButton onClick={() => updateRecipesMutation(recipes)} loading={updateRecipesSubmission.isLoading}>
 							Speichern
 						</SaveButton>
 					</>}

@@ -6,33 +6,28 @@ import { useEffect, useState } from 'react'
 interface TeachIngredientProps {
 	ingredient: Ingredient
 	ingredientsHandler: UseListStateHandler<Ingredient>
+	index: number
 }
 
 const TeachIngredient = ({
 	ingredient,
 	ingredientsHandler,
+	index,
 }: TeachIngredientProps) => {
 	const [teachin, setTeachin] = useState(false)
 	useEffect(() => {
 		teachin &&
 			setTimeout(() => {
-				ingredientsHandler.applyWhere(
-					(i) => i.id == ingredient.id,
-					(i) => ({ ...i, timePerCentiliter: i.timePerCentiliter + 100 })
-				)
+				ingredientsHandler.setItemProp(index, 'timePerCentiliter', ingredient.timePerCentiliter + 100)
 			}, 100)
-	}, [ingredient, ingredientsHandler, teachin])
+	}, [ingredient, ingredientsHandler, teachin, index])
 	return (
 		<Tooltip className="flex-grow" label="Klicke auf Stop, sobald 1 cl eingefüllt wurde">
 			<Button
 				className="w-full"
 				onClick={() => {
 					setTeachin((t) => !t)
-					!teachin &&
-						ingredientsHandler.applyWhere(
-							(i) => i.id == ingredient.id,
-							(i) => ({ ...i, timePerCentiliter: 0 })
-						)
+					!teachin && ingredientsHandler.setItemProp(index, 'timePerCentiliter', 0)
 				}}
 				color="pink"
 			>
