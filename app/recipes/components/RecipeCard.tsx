@@ -20,10 +20,10 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
 				onClick={() => {
 					setInProgress(true)
 				}}
-				className="shadow rounded p-4 cursor-pointer bg-green-600/50"
+				className="shadow rounded p-4 py-8 cursor-pointer bg-green-600/50"
 			>
 				<h3 className="flex justify-between">
-					<div className="font-bold text-lg">{recipe.name}</div>
+					<div className="font-bold text-4xl">{recipe.name}</div>
 					<div>
 						{/* ★☆ */}
 						{hasAlcohol ? (

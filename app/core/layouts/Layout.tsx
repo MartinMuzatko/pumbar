@@ -17,15 +17,6 @@ const Layout = ({ children, title, contain, className }: LayoutProps) => {
 			<Head>
 				<title>{title || 'Südstaaten Furs e.V.'}</title>
 			</Head>
-			<header>
-				<div className="bg-gray-600 dark:bg-gray-800 z-10 relative">
-					<div className="container">
-						<h1 className="font-bold text-xl">
-							PuMbar! - Mixen bis zum Morgengrauen
-						</h1>
-					</div>
-				</div>
-			</header>
 			{contain ? (
 				<div className="container pt-8">
 					<div className="rounded shadow relative">
@@ -35,9 +26,14 @@ const Layout = ({ children, title, contain, className }: LayoutProps) => {
 			) : (
 				children
 			)}
-			<div className="container pb-16">
-				<div className="bg-black text-white p-4">Footer</div>
-			</div>
+			<footer>
+				<div className="container">
+					<h1 className="font-bold text-xl">
+						PuMbar! - Mixen bis zum Morgengrauen
+					</h1>
+					Gebastelt von Pum & Misan!
+				</div>
+			</footer>
 		</div>
 	)
 }

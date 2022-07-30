@@ -20,10 +20,10 @@ const RecipeIngredientTabs = () => {
 	const [recipes, recipesHandler] = useListState(originalRecipes)
 	const [editMode, setEditMode] = useState(false)
 	return <div className="">
-		<Tabs classNames={{ tabsList: 'bg-green-1o00' }}>
-			<Tabs.Tab label="Rezepte">
-				<div className="p-4 bg-gray-800">
-					{editMode && <>
+		{editMode ? <>
+			<Tabs variant="outline">
+				<Tabs.Tab label="Rezepte">
+					<div className="p-4 bg-gray-800">
 						<Button onClick={() => {
 							recipesHandler.append({
 								name: 'Neues Rezept',
@@ -32,27 +32,25 @@ const RecipeIngredientTabs = () => {
 						}}>
 							Rezept hinzufügen
 						</Button>
-					</>}
-					{recipes.map((recipe, index) => <div className="my-4" key={index}>
-						{editMode
-							? <RecipeEditor {...{ ingredients, recipe, recipeHandler: recipesHandler, index }} />
-							: <RecipeCard {...{ recipe }} />
-						}
-					</div>)}
-					{editMode && <>
+						{recipes.map((recipe, index) => <div className="my-4" key={index}>
+							<RecipeEditor {...{ ingredients, recipe, recipeHandler: recipesHandler, index }} />
+						</div>)}
 						<SaveButton onClick={() => updateRecipesMutation(recipes)} loading={updateRecipesSubmission.isLoading}>
 							Speichern
 						</SaveButton>
-					</>}
-				</div>
-			</Tabs.Tab>
-			<Tabs.Tab label="Zutaten">
-				<div className="p-4 bg-gray-800">
-					{editMode && <IngredientsEditor {...{ ingredients, ingredientsHandler }} />
-					}
-				</div>
-			</Tabs.Tab>
-		</Tabs>
+					</div>
+				</Tabs.Tab>
+				<Tabs.Tab label="Zutaten">
+					<div className="p-4 bg-gray-800">
+						<IngredientsEditor {...{ ingredients, ingredientsHandler }} />
+					</div>
+				</Tabs.Tab>
+			</Tabs>
+		</> : <>
+			{recipes.map((recipe, index) => <div className="my-4" key={index}>
+				<RecipeCard {...{ recipe }} />
+			</div>)}
+		</>}
 		<div className="p-4">
 			<Switch label="Edit Modus" checked={editMode} onChange={e => setEditMode(e.currentTarget.checked)} />
 		</div>
