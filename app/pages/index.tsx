@@ -13,8 +13,8 @@ import getRecipes from 'app/recipes/queries/getRecipes'
 import getIngredients from 'app/ingredients/queries/getIngredients'
 
 const RecipeIngredientTabs = () => {
-	const [{ recipes: originalRecipes }] = useQuery(getRecipes, {})
-	const [{ ingredients: originalIngredients }] = useQuery(getIngredients, {})
+	const [originalRecipes] = useQuery(getRecipes, {})
+	const [originalIngredients] = useQuery(getIngredients, {})
 	const [updateRecipesMutation, updateRecipesSubmission] = useMutation(updateRecipes)
 	const [ingredients, ingredientsHandler] = useListState(originalIngredients)
 	const [recipes, recipesHandler] = useListState(originalRecipes)
@@ -26,9 +26,6 @@ const RecipeIngredientTabs = () => {
 					{editMode && <>
 						<Button onClick={() => {
 							recipesHandler.append({
-								id: -1,
-								createdAt: new Date(),
-								updatedAt: new Date(),
 								name: 'Neues Rezept',
 								steps: [],
 							})
@@ -36,7 +33,7 @@ const RecipeIngredientTabs = () => {
 							Rezept hinzufügen
 						</Button>
 					</>}
-					{recipes.map((recipe, index) => <div className="my-4" key={recipe.id}>
+					{recipes.map((recipe, index) => <div className="my-4" key={index}>
 						{editMode
 							? <RecipeEditor {...{ ingredients, recipe, recipeHandler: recipesHandler, index }} />
 							: <RecipeCard {...{ recipe }} />

@@ -1,7 +1,7 @@
 import { Button, Modal, Slider, TextInput } from '@mantine/core'
 import { useListState } from '@mantine/hooks'
 import { UseListStateHandler } from '@mantine/hooks/lib/use-list-state/use-list-state'
-import { Ingredient } from '@prisma/client'
+import { Ingredient } from 'app/types'
 import { useState } from 'react'
 import { CompleteRecipe } from '../types'
 
@@ -58,10 +58,7 @@ const RecipeEditor = ({ recipe, ingredients, recipeHandler, index }: RecipeEdito
 										...step,
 										centiliter: v,
 									})
-									recipeHandler.applyWhere(
-										(r) => r.id == recipe.id,
-										(r) => ({ ...r, steps: recipeSteps })
-									)
+									recipeHandler.setItemProp(index, 'steps', recipeSteps)
 								}}
 								max={50}
 								step={0.5}
@@ -82,12 +79,9 @@ const RecipeEditor = ({ recipe, ingredients, recipeHandler, index }: RecipeEdito
 					<div
 						onClick={() => {
 							setIngredientDialogOpened(false)
-							const newStep = { id: 0, createdAt: new Date(), updatedAt: new Date(), recipeId: recipe.id, ingredientId: ingredient.id, ingredient, centiliter: 4 }
+							const newStep = { id: 0, createdAt: new Date(), updatedAt: new Date(), ingredientId: ingredient.id, ingredient, centiliter: 4 }
 							recipeStepsHandler.append(newStep)
-							recipeHandler.applyWhere(
-								(r) => r.id == recipe.id,
-								(r) => ({ ...r, steps: [...r.steps, newStep] })
-							)
+							recipeHandler.setItemProp(index, 'steps', [...recipeSteps, newStep])
 						}}
 						className="flex rounded cursor-pointer hover:bg-green-200 p-4"
 						key={ingredient.id}

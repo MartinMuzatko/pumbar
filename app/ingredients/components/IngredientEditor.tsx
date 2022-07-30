@@ -1,6 +1,6 @@
 import { Button, NumberInput, Select, TextInput } from '@mantine/core'
 import { UseListStateHandler } from '@mantine/hooks/lib/use-list-state/use-list-state'
-import { Ingredient } from '@prisma/client'
+import { Ingredient } from 'app/types'
 import TeachIngredient from './TeachIngredient'
 
 interface IngredientsEditorProps {
@@ -13,8 +13,6 @@ const IngredientsEditor = ({ ingredients, ingredientsHandler }: IngredientsEdito
 		<Button onClick={() => {
 			ingredientsHandler.append({
 				alcohol: 0,
-				createdAt: new Date(),
-				updatedAt: new Date(),
 				id: -1,
 				name: 'Zutatensaft',
 				relais: 1,

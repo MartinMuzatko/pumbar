@@ -1,6 +1,5 @@
 import WithBundleAnalyzer from '@next/bundle-analyzer'
 import { BlitzConfig, sessionMiddleware } from 'blitz'
-import { permissionsIsAuthorized } from 'PermissionsIsAuthorized'
 
 const withBundleAnalyzer = WithBundleAnalyzer({ enabled: process.env.ANALYZE == 'true' })
 
@@ -8,7 +7,7 @@ const config: BlitzConfig = {
 	middleware: [
 		sessionMiddleware({
 			cookiePrefix: 'ssf',
-			isAuthorized: permissionsIsAuthorized,
+			isAuthorized: () => false,
 		}),
 	],
 	i18n: {

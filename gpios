@@ -1,0 +1,70 @@
+Relais Karte 1 Rechts
+R 8 Grün    PI links 2     GPIO - 2
+R 7 Blau    PI links 3     GPIO - 3
+R 6 Lila    PI links 4     GPIO - 4
+R 5 Grau    PI links 6     GPIO - 17
+R 4 Weiß    PI links 7     GPIO - 22
+R 3 Schwarz PI links 8     GPIO - 27
+R 2 Braun   PI links 9     GPIO - 10
+R 1 Rot     PI links 10    GPIO - 9
+
+Relais Karte 2 Links
+R 1 Rot     PI rechts 4     GPIO - 14
+R 2 Braun   PI rechts 5     GPIO - 15
+R 3 Schwarz PI rechts 6     GPIO - 18
+R 4 Weiß    PI rechts 8     GPIO - 23
+R 5 Grau    PI rechts 9     GPIO - 24
+R 6 Lila    PI rechts 11    GPIO - 25
+R 7 Blau    PI rechts 12    GPIO - 8
+R 8 Grün    PI rechts 13    GPIO - 7
+
+
+
+
+
+
+
+
+raspi-gpio set 22 op dh;
+raspi-gpio set 27 op dh;
+raspi-gpio set 10 op dh;
+raspi-gpio set 9 op dh;
+
+
+raspi-gpio set 14 op dh;
+raspi-gpio set 15 op dh;
+raspi-gpio set 18 op dh;
+raspi-gpio set 23 op dh;
+raspi-gpio set 24 op dh;
+raspi-gpio set 25 op dh;
+raspi-gpio set 8 op dh;
+raspi-gpio set 7 op dh;
+
+raspi-gpio set 14 op dl;
+raspi-gpio set 15 op dl;
+raspi-gpio set 18 op dl;
+raspi-gpio set 23 op dl;
+raspi-gpio set 24 op dl;
+raspi-gpio set 25 op dl;
+raspi-gpio set 8 op dl;
+raspi-gpio set 7 op dl;
+
+
+
+raspi-gpio set 2 op dl;
+raspi-gpio set 3 op dl;
+raspi-gpio set 4 op dl;
+raspi-gpio set 17 op dl;
+raspi-gpio set 22 op dl;
+raspi-gpio set 27 op dl;
+raspi-gpio set 10 op dl;
+raspi-gpio set 9 op dl;
+
+raspi-gpio set 2 op dh;
+raspi-gpio set 3 op dh;
+raspi-gpio set 4 op dh;
+raspi-gpio set 17 op dh;
+raspi-gpio set 22 op dh;
+raspi-gpio set 27 op dh;
+raspi-gpio set 10 op dh;
+raspi-gpio set 9 op dh;

@@ -1,6 +1,6 @@
 import { Button, Loader, Tooltip } from '@mantine/core'
 import { UseListStateHandler } from '@mantine/hooks/lib/use-list-state/use-list-state'
-import { Ingredient } from '@prisma/client'
+import { Ingredient } from 'app/types'
 import { useEffect, useState } from 'react'
 
 interface TeachIngredientProps {

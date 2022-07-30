@@ -1,37 +1,8 @@
-import { paginate, resolver } from 'blitz'
-import db, { Prisma } from 'db'
-
-interface GetRecipesInput
-	extends Pick<Prisma.RecipeFindManyArgs, 'where' | 'orderBy' | 'skip' | 'take'> { }
+import { resolver } from 'blitz'
+import db from 'db'
 
 export default resolver.pipe(
-	async ({ where, orderBy, skip = 0, take = 100 }: GetRecipesInput) => {
-		// TODO: in multi-tenant app, you must add validation to ensure correct tenant
-		const {
-			items: recipes,
-			hasMore,
-			nextPage,
-			count,
-		} = await paginate({
-			skip,
-			take,
-			count: () => db.recipe.count({ where: where || {} }),
-			query: (paginateArgs) => db.recipe.findMany({
-				...paginateArgs, where: where || {}, orderBy, include: {
-					steps: {
-						include: {
-							ingredient: true,
-						}
-					}
-				}
-			}),
-		})
-
-		return {
-			recipes,
-			nextPage,
-			hasMore,
-			count,
-		}
+	() => {
+		return db.readRecipes()
 	}
 )
