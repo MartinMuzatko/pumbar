@@ -13,7 +13,7 @@ const FillProgress = ({ max, onDone }: FillProgressProps) => {
 	const current = (100 / maxProgress) * counter
 	const div = (1 / refreshRate) * 1000
 	useEffect(() => {
-		counter != maxProgress ? setTimeout(() => setCounter(counter + 1), refreshRate) : onDone?.()
+		!(counter > maxProgress) ? setTimeout(() => setCounter(counter + 1), refreshRate) : onDone?.()
 	}, [counter, maxProgress, onDone])
 	return (
 		<div>

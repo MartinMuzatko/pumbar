@@ -40,8 +40,10 @@ const DrinkDialog = ({ recipe, inProgress, setInProgress }: DrinkDialogProps) =>
 			opened={inProgress}
 		>
 			{mixing == MixingState.idle && (
-				<div className="flex items-center justify-around py-8">
+				<div className="flex flex-col items-center justify-around py-8 text-lg">
 					<Button
+						className="mb-4"
+						size="xl"
 						onClick={() => {
 							setMixing(MixingState.mixing)
 							assembleCocktailMutation(recipe)
@@ -50,6 +52,7 @@ const DrinkDialog = ({ recipe, inProgress, setInProgress }: DrinkDialogProps) =>
 						Zubereitung beginnen
 					</Button>
 					<Button
+						size="xl"
 						color="pink"
 						onClick={() => {
 							setInProgress(false)

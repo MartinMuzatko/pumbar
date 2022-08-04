@@ -49,8 +49,8 @@ const RecipeIngredientTabs = () => {
 		</> : <div className="px-4 grid gap-4 grid-cols-2">
 			{recipes.map((recipe, index) => <RecipeCard key={index} {...{ recipe }} />)}
 		</div>}
-		<div className="p-4">
-			<Switch label="Edit Modus" checked={editMode} onChange={e => setEditMode(e.currentTarget.checked)} />
+		<div className="p-4 py-16 text-xl">
+			<Switch size="lg" classNames={{ label: 'text-xl' }} label="Edit Modus" checked={editMode} onChange={e => setEditMode(e.currentTarget.checked)} />
 			<Button size="sm" className="mt-4" onClick={() => location.reload()}>Reload</Button>
 		</div>
 	</div>

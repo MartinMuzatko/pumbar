@@ -45,6 +45,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
 						<>
 							<div>
 								{(step.percentage * 100).toFixed(0)}% {step.ingredient.name}
+								<small>({step.ingredient.relais})</small>
 							</div>
 						</>
 					))}

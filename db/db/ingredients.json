@@ -2,36 +2,99 @@
     {
         "alcohol": 0,
         "id": "BAGIS-IUzLzulJ_Ipy6Jg",
-        "name": "A-Saftlee",
-        "relais": 2,
-        "timePerCentiliter": 1000
-    },
-    {
-        "alcohol": 0,
-        "id": "YYKpHRZg1Su3ZyQb-Sr59",
-        "name": "O-Saft",
-        "relais": 4,
-        "timePerCentiliter": 1000
-    },
-    {
-        "alcohol": 0,
-        "id": "uErxHahJF9_JMnPXcSUh8",
-        "name": "Miausaft",
-        "relais": 7,
-        "timePerCentiliter": 1000
-    },
-    {
-        "alcohol": 5,
-        "id": "szg089FavNlUScj1apf7w",
-        "name": "Triplesec",
+        "name": "R1-1",
         "relais": 14,
         "timePerCentiliter": 1000
     },
     {
         "alcohol": 0,
+        "id": "YYKpHRZg1Su3ZyQb-Sr59",
+        "name": "R1-2",
+        "relais": 2,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "uErxHahJF9_JMnPXcSUh8",
+        "name": "R1-3",
+        "relais": 3,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 5,
+        "id": "szg089FavNlUScj1apf7w",
+        "name": "R1-4",
+        "relais": 4,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
         "id": "JNndHjy-NgVOh3g2Dbrra",
-        "name": "Zutatensaft",
+        "name": "R1-5",
+        "relais": 17,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "VI0J7yMGbI1BkW-k3nwcl",
+        "name": "R2-1",
+        "relais": 15,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "gt6sL5NP_R6OJ7_cP4SyH",
+        "name": "R2-2",
+        "relais": 18,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "0Fr5ABpIfUWYD-djGOOKs",
+        "name": "R2-3",
         "relais": 23,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "arDyUyQDpXBeH42w6VYwE",
+        "name": "R2-4",
+        "relais": 24,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "qEYSf4GEr6pack6oQ4GVQ",
+        "name": "R2-5",
+        "relais": 25,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "qHagqKJ5q0J2DreK8Wf37",
+        "name": "Magnetventil 1",
+        "relais": 27,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "TUst6401XzR65mFg_CtE8",
+        "name": "Magnetventil 2",
+        "relais": 22,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "5iVYf9-R2bK7pMA4uqWR_",
+        "name": "Magnetventil 3",
+        "relais": 10,
+        "timePerCentiliter": 1000
+    },
+    {
+        "alcohol": 0,
+        "id": "SL3k6Ua_0bNigcuJkBuno",
+        "name": "Magnetventil 4",
+        "relais": 9,
         "timePerCentiliter": 1000
     }
 ]

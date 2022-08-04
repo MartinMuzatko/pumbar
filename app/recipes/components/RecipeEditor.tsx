@@ -56,6 +56,7 @@ const RecipeEditor = ({ recipe, ingredients, recipeHandler, index }: RecipeEdito
 							<div className="flex items-center justify-between">
 								<span>
 									{step.centiliter}cl {step.ingredient.name}
+									<small>({step.ingredient.relais})</small>
 								</span>
 								<Button
 									onClick={() => {
