@@ -1,1 +1,29 @@
-[]
+[
+    {
+        "name": "Testrezept",
+        "steps": [
+            {
+                "ingredientId": "BAGIS-IUzLzulJ_Ipy6Jg",
+                "ingredient": {
+                    "alcohol": 0,
+                    "id": "BAGIS-IUzLzulJ_Ipy6Jg",
+                    "name": "R1-1",
+                    "relais": 14,
+                    "timePerCentiliter": 1000
+                },
+                "centiliter": 4
+            },
+            {
+                "ingredientId": "uErxHahJF9_JMnPXcSUh8",
+                "ingredient": {
+                    "alcohol": 0,
+                    "id": "uErxHahJF9_JMnPXcSUh8",
+                    "name": "R1-3",
+                    "relais": 3,
+                    "timePerCentiliter": 1000
+                },
+                "centiliter": 4
+            }
+        ]
+    }
+]

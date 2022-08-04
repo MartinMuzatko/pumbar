@@ -40,14 +40,16 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
 						)}
 					</div>
 				</h3>
-				<div>
+				<div className="divide-y">
 					{ingredients.map((step) => (
-						<>
+						<div key={step.ingredientId} className="flex justify-between">
 							<div>
-								{(step.percentage * 100).toFixed(0)}% {step.ingredient.name}
-								<small>({step.ingredient.relais})</small>
+								{step.centiliter}cl {step.ingredient.name}
 							</div>
-						</>
+							<div className="text-sm">
+								<small>{(step.percentage * 100).toFixed(0)}%</small> <small>({step.ingredient.relais})</small>
+							</div>
+						</div>
 					))}
 				</div>
 			</article>

@@ -41,6 +41,9 @@ const DrinkDialog = ({ recipe, inProgress, setInProgress }: DrinkDialogProps) =>
 		>
 			{mixing == MixingState.idle && (
 				<div className="flex flex-col items-center justify-around py-8 text-lg">
+					{recipe.steps.map((step, index) => <div key={index}>
+						{step.ingredient.name} {step.centiliter}cl
+					</div>)}
 					<Button
 						className="mb-4"
 						size="xl"
