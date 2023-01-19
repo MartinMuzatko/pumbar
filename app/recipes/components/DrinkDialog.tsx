@@ -29,6 +29,7 @@ const DrinkDialog = ({ recipe, inProgress, setInProgress }: DrinkDialogProps) =>
 	)
 	return (
 		<Modal
+			size={600}
 			closeOnEscape={mixing != MixingState.mixing}
 			closeOnClickOutside={mixing != MixingState.mixing}
 			withCloseButton={mixing != MixingState.mixing}

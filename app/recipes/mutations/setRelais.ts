@@ -14,7 +14,7 @@ const setPinOn = (pin: number) => setPin(pin, Signal.low)
 const setPinOff = (pin: number) => setPin(pin, Signal.high)
 
 export default resolver.pipe(
-	async ({ relais, state }: { relais: number | string, state: boolean }) => {
-		setPin(relais, state)
+	async ({ relais, state }: { relais: number, state: boolean }) => {
+		setPin(relais, state ? Signal.low : Signal.high)
 	}
 )

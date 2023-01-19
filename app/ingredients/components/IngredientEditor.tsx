@@ -47,8 +47,8 @@ const IngredientEditor = ({ ingredient, ingredientsHandler, index }: IngredientE
 	}, [run, ingredient.relais, setRelaisMutation])
 	return <tr>
 		<td className="py-1">
-			<div className="flex">
-				<Button loading={run} onClick={() => {
+			<div className="flex items-center">
+				<Button onClick={() => {
 					setRun(v => !v)
 				}} className="mr-2">
 					{run ? 'Vorlauf stoppen' : 'Vorlauf'}
